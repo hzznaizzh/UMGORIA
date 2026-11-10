@@ -33,13 +33,13 @@ function toggleSidebar() {
     sb.classList.remove('collapsed');
     tb.classList.remove('sidebar-closed');
     mn.classList.remove('sidebar-closed');
-    ov.classList.remove('show');
+    if (window.innerWidth < 900) ov.classList.add('show');
+    else ov.classList.remove('show');
   } else {
     sb.classList.add('collapsed');
     tb.classList.add('sidebar-closed');
     mn.classList.add('sidebar-closed');
-    // Overlay hanya di mobile
-    if (window.innerWidth < 900) ov.classList.add('show');
+    ov.classList.remove('show');
   }
 }
 
@@ -50,6 +50,10 @@ function closeSidebar() {
   document.getElementById('main')?.classList.add('sidebar-closed');
   document.getElementById('sidebarOverlay')?.classList.remove('show');
 }
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth < 900 && AppState.sidebarOpen) closeSidebar();
+});
 
 // ═══════════════════════════════════════════════════════════════
 //  NAVIGATE
@@ -1073,6 +1077,7 @@ function exportOutlierData() {
 // ═══════════════════════════════════════════════════════════════
 async function initDashboard() {
   AppState.chartsInit = {};
+  if (window.innerWidth < 900) closeSidebar();
   await loadUmkmData();
   updateUserDisplay();
   navigate('home');

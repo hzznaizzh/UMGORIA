@@ -895,3 +895,21 @@ body {
 .help-bottom-text h3 { font-size: 24px; font-weight: 800; color: #111827; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
 .help-bottom-text p { font-size: 15px; color: #4b5563; line-height: 1.6; }
 .help-bottom-image { width: 100%; height: 260px; background: #fff; border: 12px solid #fff; border-radius: 8px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); overflow: hidden; position: relative;}
+
+@media (max-width: 900px) {
+  #topbar,
+  #topbar.sidebar-closed { left: 0; }
+  #main,
+  #main.sidebar-closed { margin-left: 0; }
+  .help-cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .notif-hero-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .chart-header { flex-wrap: wrap; gap: 12px; }
+  .help-cards-grid { grid-template-columns: 1fr; }
+  .help-hero-title { font-size: clamp(26px, 8vw, 36px); }
+  .help-popular-search { flex-wrap: wrap; }
+  .notif-item { flex-wrap: wrap; }
+  .notif-item-time { margin-left: 64px; }
+}
